@@ -30,3 +30,45 @@
 ##### Steps:
 	1. Head over to AWS IAM -> Policies -> Create Policy
 ![IAM](https://devopscube.com/wp-content/uploads/2021/09/image-7.png)
+
+#### Add the CloudWatch Role to the instance
+	1. Head over to ec2 and select the instance in which you want to configure the custom logs.
+	2. Right-click for options and select Security and then choose Modify IAM ROLE option.
+	3. Select the custom cloud watch IAM role from the dropdown and save it.
+
+#### Install CloudWatch Logs Agent
+	SSH into the ec2 instance and follow the steps given below:
+	 wget https://s3.amazonaws.com/amazoncloudwatch-agent/ubuntu/amd64/latest/amazon-cloudwatch-agent.deb
+	sudo dpkg -i amazon-cloudwatch-agent.deb
+
+##### If you are just starting with cloud watch agent, it is better to run the cloud watch agent wizard that helps you create the log agent configuration.
+
+	 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-config-wizard
+
+The final config files get stored in the following location
+
+	 /opt/aws/amazon-cloudwatch-agent/bin/config.json
+
+If you want to collect the system metrics, install collected on your server.
+
+	 sudo apt-get update -y 
+	 sudo apt-get install collectd
+
+Now let start the CloudWatch agent using the following command:
+
+	 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c file:/opt/aws/amazon-cloudwatch-agent/bin/config.json -s
+
+You can check the agent status using the following command.
+
+	 sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a status
+
+![IAM](https://devopscube.com/wp-content/uploads/2021/08/image-20.png)
+
+### Validating Custom Logs in Cloudwatch Dashboard
+Once the setup is done, you can view all the configured logs under the cloudwatch dashboard (under the logs option)
+
+	1. Go to Logs –> Log Groups and you will see the log group you mentioned in the agent configuration.
+	2. Select the log group and you should see the instance identified you mentioned in the config.
+	3. If you click the instance identifier, it shows all the logs. You can use the cloud watch filter option to filter and query required logs.
+
+![IAM](https://devopscube.com/wp-content/uploads/2020/04/image-9.png)
