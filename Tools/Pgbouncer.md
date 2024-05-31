@@ -1,0 +1,18 @@
+- **`[databases]`**: Define the databases `pgbouncer` will manage.
+- **`[pgbouncer]`**: Configure `pgbouncer` settings.
+    - `listen_addr`: IP address `pgbouncer` will listen on. Use `127.0.0.1` for local only or `*` for all interfaces.
+    - `listen_port`: Port `pgbouncer` will listen on (e.g., `6432`).
+    - `auth_type`: Authentication type (`md5` is recommended).
+    - `auth_file`: File containing PostgreSQL usernames and passwords.
+    - `pool_mode`: Connection pooling mode (`session`, `transaction`, or `statement`). `transaction` mode is recommended for most cases.
+    - `max_client_conn`: Maximum number of client connections.
+    - `default_pool_size`: Default size of connection pools.
+    - `reserve_pool_size`: Number of additional connections to keep in reserve for bursts.
+    - `reserve_pool_timeout`: How long to wait before closing an idle connection from the reserve pool.
+    - `log_connections`: Log new client connections.
+    - `log_disconnections`: Log client disconnections.
+    - `log_pooler_errors`: Log errors in `pgbouncer`.
+    - `server_reset_query`: Query to reset server state.
+    - `stats_period`: How often to print statistics to the log.
+    - `admin_users`: Users allowed to perform administrative tasks.
+    - `ignore_startup_parameters`: Ignore specific startup parameters to avoid connection issues.
