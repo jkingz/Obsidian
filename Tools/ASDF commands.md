@@ -5,3 +5,15 @@
 - asdf plugin remove <name> Remove plugin and package versions
 - asdf plugin update <name> [<git-ref>] Update a plugin to latest commit on default branch or a particular git-ref
 - asdf plugin update --all Update all plugins to latest commit on default branch
+
+### Manage packages
+- asdf current Display current version set or being used for all packages
+- asdf current <name> Display current version set or being used for package
+- asdf global <name> <version> Set the package global version
+- asdf global <name> latest[:<version>] Set the package global version to the latest provided version
+- asdf help <name> [<version>] Output documentation for plugin and tool
+- asdf install Install all the package versions listed in the .tool-versions file
+- asdf install <name> Install one tool at the version specified in the .tool-versions file
+- asdf install <name> <version> Install a specific version of a package
+- asdf install <name> latest[:<version>] Install the latest stable version of a package, or with optional version, install the latest stable version that begins with the given string
+- asdf latest <name> [<version>] Show latest stable version of a package
