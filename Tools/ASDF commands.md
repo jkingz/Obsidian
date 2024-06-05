@@ -17,3 +17,12 @@
 - asdf install <name> <version> Install a specific version of a package
 - asdf install <name> latest[:<version>] Install the latest stable version of a package, or with optional version, install the latest stable version that begins with the given string
 - asdf latest <name> [<version>] Show latest stable version of a package
+- asdf latest --all Show latest stable version of all the packages and if they are installed
+- asdf list <name> [version] List installed versions of a package and optionally filter the versions
+- asdf list all <name> [<version>] List all versions of a package and optionally filter the returned versions
+- asdf local <name> <version> Set the package local version
+- asdf local <name> latest[:<version>] Set the package local version to the latest provided version
+- asdf shell <name> <version> Set the package version to `ASDF_${LANG}_VERSION` in the current shell
+- asdf uninstall <name> <version> Remove a specific version of a package
+- asdf where <name> [<version>] Display install path for an installed or current version
+- asdf which <command> Display the path to an executable
